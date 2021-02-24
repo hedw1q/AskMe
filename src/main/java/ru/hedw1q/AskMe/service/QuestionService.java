@@ -8,6 +8,8 @@ import ru.hedw1q.AskMe.repository.UserRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author hedw1q
@@ -22,5 +24,10 @@ public class QuestionService {
     public boolean addQuestion(Question newQuestion) {
         questionRepository.save(newQuestion);
         return true;
+    }
+    public List<? extends Question> getQuestionList(){
+        List <Question> questionList=new ArrayList<>();
+        questionList= questionRepository.findAll();
+        return questionList;
     }
 }
