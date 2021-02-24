@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * @author hedw1q
  */
-@Component
+@Deprecated
 public class UserDAO {
 //    private static final String URL="jdbc:postgresql://localhost:5432/AskMe_DB";
 //    private static final String LOGIN="postgres";
