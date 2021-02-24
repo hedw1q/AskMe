@@ -18,7 +18,6 @@ public class Question implements BaseEntry{
     @NotEmpty(message = "Введите тело вопроса")
     private String body;
     private String tag;
-    @NotEmpty
     private String author;
 
     public Question() {

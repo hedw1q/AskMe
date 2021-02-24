@@ -17,9 +17,4 @@ public class DefaultController {
     }
 
 
-    @GetMapping("/ask")
-    public String getAskPage(){
-        return "ask";
-    }
-
 }
