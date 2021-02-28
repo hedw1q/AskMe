@@ -52,13 +52,13 @@
  <div class="container mt-4 mx-3 mb-3">
     <div class="row">
       <div class="col-md-10">
-        <h4 style="margin-bottom: 15px;">How to write good code?</h4>
+        <h4 style="margin-bottom: 15px;" th:text="${question.getTitle()}">How to write good code?</h4>
 
         <div class="container">
 					<div class="row justify-content-center">
 						<div class="col-1 mx-0 p-0">
 							<div class="row">
-								<img src="static/img/cat.jpg" width="64" height="64" class=" img-thumbnail">
+								<img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64" class=" img-thumbnail">
 							</div>
 							
 							<div class="row  pl-2 h-0">
@@ -70,14 +70,14 @@
 								</button>
 							</div>
 							<div class="row pl-4 h-0">
-								<h5>32</h5>
+								<h5 th:text="${question.getRating()}">32</h5>
 							</div>
 						</div>
 						<div class="col-10">
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+							<p class="card-text" th:text="${question.getBody()}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 							incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
 							incididunt ut labore et dolore magna aliqua. </p>
-							Tags: <a href="#" >code</a> <a href="#" >dolor</a> 
+							Tags: <a href="#" th:text="${question.getTag()}" >code</a>
 						</div>
 					</div> 
         </div>
@@ -89,38 +89,7 @@
 						<div class="row justify-content-center">
 							<div class="col-1 mx-0 p-0">
 								<div class="row">
-									<img src="static/img/cat.jpg" width="64" height="64" class=" img-thumbnail">
-								</div>
-								
-								<div class="row  pl-2 ">
-									<button type="button" class="btn btn-default p-1" aria-label="Left Align">
-										<span class="oi oi-chevron-top" aria-hidden="true"></span>
-									</button>
-									<button type="button" class="btn btn-default p-1" aria-label="Left Align">
-										<span class="oi oi-chevron-bottom" aria-hidden="true"></span>
-									</button>
-								</div>
-								<div class="row pl-4 h-1">
-									<h5>32</h5>
-								</div>
-							</div>
-
-							<div class="col-10">
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. </p>
-									<span class="oi oi-check"></span> Correct answer!
-							</div>
-						</div> 
-					</div>  
-				</div>
-
-				<div class="card p-2 m-1">
-					<div class="container">
-						<div class="row justify-content-center">
-							<div class="col-1 mx-0 p-0">
-								<div class="row">
-									<img src="static/img/cat.jpg" width="64" height="64" class=" img-thumbnail">
+									<img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64" class=" img-thumbnail">
 								</div>
 								
 								<div class="row  pl-2 ">
@@ -150,7 +119,37 @@
 						<div class="row justify-content-center">
 							<div class="col-1 mx-0 p-0">
 								<div class="row">
-									<img src="static/img/cat.jpg" width="64" height="64" class=" img-thumbnail">
+									<img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64" class=" img-thumbnail">
+								</div>
+								
+								<div class="row  pl-2 ">
+									<button type="button" class="btn btn-default p-1" aria-label="Left Align">
+										<span class="oi oi-chevron-top" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-default p-1" aria-label="Left Align">
+										<span class="oi oi-chevron-bottom" aria-hidden="true"></span>
+									</button>
+								</div>
+								<div class="row pl-4 h-1">
+									<h5>32</h5>
+								</div>
+							</div>
+
+							<div class="col-10">
+									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+									incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+									incididunt ut labore et dolore magna aliqua. </p>
+							</div>
+						</div> 
+					</div>  
+				</div>
+
+				<div class="card p-2 m-1">
+					<div class="container">
+						<div class="row justify-content-center">
+							<div class="col-1 mx-0 p-0">
+								<div class="row">
+									<img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64" class=" img-thumbnail">
 								</div>
 								
 								<div class="row  pl-2 ">
@@ -200,25 +199,27 @@
              <a href="index.html" class="text-dark">park </a>
              <a href="index.html" class="text-secondary">C# </a></p>
           </h5>
-          
-          
-        </div>
-        <div class="row">
-          <h4>Best users</h4> <br>
 
-          <h5>
-            <a href="#" class="badge badge-primary">Bob</a>
-            <a href="#" class="badge badge-primary">Alisa</a>
-            <a href="#" class="badge badge-primary">Mary</a>
-            <a href="#" class="badge badge-primary">Jack</a>
-            <a href="#" class="badge badge-primary">Nik</a>
 
-          
-        </div>
+		</div>
+			<div class="row">
+				<h4>Best user:</h4>
+				<h5>
+					<div sec:authorize="isAuthenticated()">
+						<div class="badge badge-primary" sec:authentication="name" ></div>
+						</br>
+						</br>
+						<img src="../static/img/shy.gif" th:src="@{/img/shy.gif}"  class=" img-thumbnail">
+					</div>
 
-      </div>
-    </div>
-  </div>
+					<div sec:authorize="!isAuthenticated()">
+						<h6>Log In to find out 🙂</h6>
+					</div>
+				</h5>
+			</div>
+		</div>
+	</div>
+ </div>
 
 
   

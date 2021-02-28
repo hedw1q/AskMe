@@ -6,30 +6,25 @@ import javax.validation.constraints.Size;
 
 /**
  * @author hedw1q
+ * Simple entity object representing an question.
  */
 @Entity
 @Table(name = "AM_question")
-public class Question implements BaseEntry{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Question extends BaseEntity{
+
     @Size(min=2, message = "Не меньше 2 знаков")
     private String title;
     @NotEmpty(message = "Введите тело вопроса")
     private String body;
     private String tag;
     private String author;
+    private int rating;
 
-    public Question() {
-    }
+    public Question() { }
 
-    public Long getId() {
-        return id;
-    }
+    public int getRating() { return rating; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setRating(int rating) { this.rating = rating; }
 
     public String getTitle() {
         return title;

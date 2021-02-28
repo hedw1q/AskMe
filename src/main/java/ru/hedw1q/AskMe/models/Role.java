@@ -7,6 +7,7 @@ import java.util.Set;
 
 /**
  * @author hedw1q
+ * Simple entity object representing an user's role.
  */
 @Entity
 @Table(name = "AM_role")

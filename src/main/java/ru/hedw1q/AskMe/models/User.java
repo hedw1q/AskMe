@@ -10,13 +10,12 @@ import java.util.Set;
 
 /**
  * @author hedw1q
+ * Simple entity object representing an user.
  */
 @Entity
 @Table(name = "AM_user")
-public class User implements UserDetails {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User extends BaseEntity implements UserDetails {
+
     @Size(min=2, message = "Не меньше 2 знаков")
     private String username;
     @Size(min=2, message = "Не меньше 2 знаков")
@@ -25,14 +24,6 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     public User() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override

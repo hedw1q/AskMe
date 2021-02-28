@@ -16,8 +16,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+
 /**
  * @author hedw1q
+ * Service class for User entity. Provides all methods used in UserController class.
  */
 @Service
 public class UserService implements UserDetailsService {

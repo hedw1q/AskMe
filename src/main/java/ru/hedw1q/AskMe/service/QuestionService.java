@@ -10,9 +10,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author hedw1q
+ * Service class for Question entity. Provides all methods used in QuestionController class.
  */
 @Service
 public class QuestionService {
@@ -30,4 +32,10 @@ public class QuestionService {
         questionList= questionRepository.findAll();
         return questionList;
     }
+    public Question showOneQuestion(long id){
+        Question question = questionRepository.findById(id).orElse(new Question());
+        return question;
+    }
+
+
 }
