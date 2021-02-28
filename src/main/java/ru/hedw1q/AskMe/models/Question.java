@@ -3,6 +3,8 @@ package ru.hedw1q.AskMe.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author hedw1q
@@ -10,15 +12,14 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "AM_question")
-public class Question extends BaseEntity{
+public class Question extends BaseEntry{
 
     @Size(min=2, message = "Не меньше 2 знаков")
     private String title;
-    @NotEmpty(message = "Введите тело вопроса")
-    private String body;
     private String tag;
-    private String author;
     private int rating;
+    @OneToMany (cascade = CascadeType.ALL, mappedBy="question", fetch=FetchType.EAGER)
+    private List<Answer> answers;
 
     public Question() { }
 
@@ -26,20 +27,20 @@ public class Question extends BaseEntity{
 
     public void setRating(int rating) { this.rating = rating; }
 
+    public void incrRating(){
+        this.rating++;
+    }
+
+    public void decrRating(){
+        this.rating--;
+    }
+
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
     }
 
     public String getTag() {
@@ -50,11 +51,14 @@ public class Question extends BaseEntity{
         this.tag = tag;
     }
 
-    public String getAuthor() {
-        return author;
+    public List<Answer> getAnswers() {
+        return answers;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void addAnswer(Answer answer) {
+        answers.add(answer);
+        answer.setQuestion(this);
     }
+
+
 }

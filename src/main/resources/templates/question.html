@@ -82,7 +82,9 @@
 					</div> 
         </div>
 
-				<h5 style="margin-bottom: 15px; margin-top: 10px;">Answers(3)</h5>
+				<h5 style="margin-bottom: 15px; margin-top: 10px;">Answers</h5>
+
+		  <th:block th:each="answer : ${answerList}">
 
 				<div class="card p-2 m-1">
 					<div class="container">
@@ -101,87 +103,27 @@
 									</button>
 								</div>
 								<div class="row pl-4 h-1">
-									<h5>32</h5>
+									<h5 th:text="${answer.getRating()}">ANSWER RATING</h5>
 								</div>
 							</div>
 
 							<div class="col-10">
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. </p>
+									<p class="card-text" th:text="${answer.getBody()}">ANSWER BODY </p>
 							</div>
 						</div> 
 					</div>  
 				</div>
 
-				<div class="card p-2 m-1">
-					<div class="container">
-						<div class="row justify-content-center">
-							<div class="col-1 mx-0 p-0">
-								<div class="row">
-									<img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64" class=" img-thumbnail">
-								</div>
-								
-								<div class="row  pl-2 ">
-									<button type="button" class="btn btn-default p-1" aria-label="Left Align">
-										<span class="oi oi-chevron-top" aria-hidden="true"></span>
-									</button>
-									<button type="button" class="btn btn-default p-1" aria-label="Left Align">
-										<span class="oi oi-chevron-bottom" aria-hidden="true"></span>
-									</button>
-								</div>
-								<div class="row pl-4 h-1">
-									<h5>32</h5>
-								</div>
-							</div>
-
-							<div class="col-10">
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. </p>
-							</div>
-						</div> 
-					</div>  
-				</div>
-
-				<div class="card p-2 m-1">
-					<div class="container">
-						<div class="row justify-content-center">
-							<div class="col-1 mx-0 p-0">
-								<div class="row">
-									<img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64" class=" img-thumbnail">
-								</div>
-								
-								<div class="row  pl-2 ">
-									<button type="button" class="btn btn-default p-1" aria-label="Left Align">
-										<span class="oi oi-chevron-top" aria-hidden="true"></span>
-									</button>
-									<button type="button" class="btn btn-default p-1" aria-label="Left Align">
-										<span class="oi oi-chevron-bottom" aria-hidden="true"></span>
-									</button>
-								</div>
-								<div class="row pl-4 h-1">
-									<h5>32</h5>
-								</div>
-							</div>
-
-							<div class="col-10">
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. </p>
-							</div>
-						</div> 
-					</div>  
-				</div>
-
+		  </th:block>
+		  <form th:method="POST" th:action="@{/question/{id}(id=${question.getId()})}" th:object="${newAnswer}" class="form-group">
 				<div class="form-group">
 					<br><h5>You answer</h5>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter you answer"></textarea>
-					<button type="button" class="btn btn-primary m-2">Answer</button>
+					<textarea th:field="*{body}" class="form-control" id="body" rows="3" placeholder="Enter you answer"></textarea>
+					<input class="btn btn-primary m-2" type="submit" value="Answer"/>
 				</div>
-
+		  </form>
     </div>
-        
+
       <!-- <div class="col-2 bd-sidebar"> -->
 
         <div class="col-2 d-none d-sm-none d-md-block">
@@ -189,16 +131,13 @@
         <div class="row" style="min-height: 50px;"></div>
         <div class="row">
           <h4>Popular tags</h4>
-          <h5>
-            <p><a href="index.html" class="text-primary">C/C++   </a> 
-             <a href="index.html" class="text-secondary">Python </a> 
-             <a href="index.html" class="text-success">JavaScript </a>
-             <a href="index.html" class="text-danger">Web </a>
-             <a href="index.html" class="text-warning">mail.ru </a>
-             <a href="index.html" class="text-info">google </a>
-             <a href="index.html" class="text-dark">park </a>
-             <a href="index.html" class="text-secondary">C# </a></p>
-          </h5>
+			<h5>
+				<p><a href="index.html" class="text-primary">C++   </a>
+					<a href="index.html" class="text-secondary">Python </a>
+					<a href="index.html" class="text-secondary">Java</a>
+					<a href="index.html" class="text-success">JavaScript </a>
+					<a href="index.html" class="text-secondary">C# </a></p>
+			</h5>
 
 
 		</div>

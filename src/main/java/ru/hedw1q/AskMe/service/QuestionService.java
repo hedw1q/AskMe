@@ -14,7 +14,7 @@ import java.util.Optional;
 
 /**
  * @author hedw1q
- * Service class for Question entity. Provides all methods used in QuestionController class.
+ * Service class for Question entity. Provides methods used in QuestionController class.
  */
 @Service
 public class QuestionService {
@@ -32,7 +32,7 @@ public class QuestionService {
         questionList= questionRepository.findAll();
         return questionList;
     }
-    public Question showOneQuestion(long id){
+    public Question getQuestion(long id){
         Question question = questionRepository.findById(id).orElse(new Question());
         return question;
     }
