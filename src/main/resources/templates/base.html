@@ -108,14 +108,16 @@
                     </button>
                   </div>
                   <div class="row pl-4 h-1">
-                    <h5>32</h5>
+                    <h5 th:text="${question.getRating()}">quest-rating</h5>
                   </div>
                 </div>
                 <div class="col-10">
                     <p class="card-text" th:text="${question.getBody()}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
                     incididunt ut labore et dolore magna aliqua. </p>
-                    <a href="#" >answers(3)</a> 
+
+                    <a th:href="@{/question/{id}(id=${question.getId()})}">answers</a>
+
                       Tags: <a href="#" th:text="${question.getTag()}" >code</a>
                 </div>
               </div> 
@@ -129,10 +131,6 @@
 
       <div class="row justify-content-end">
         <button type="button" class="btn btn-secondary mt-3 mx-1 mb-5">1</button>
-        <button type="button" class="btn btn-secondary mt-3 mx-1 mb-5">2</button>
-        <button type="button" class="btn btn-secondary mt-3 mx-1 mb-5">3</button>
-        <button type="button" class="btn btn-secondary mt-3 mx-1 mb-5">...</button>
-        <button type="button" class="btn btn-secondary mt-3 mx-1 mb-5">35</button>
       </div>
     </div>
         
@@ -153,22 +151,24 @@
              <a href="index.html" class="text-dark">park </a>
              <a href="index.html" class="text-secondary">C# </a></p>
           </h5>
-          
+
           
         </div>
         <div class="row">
-          <h4>Best users</h4> <br>
-
+          <h4>Best user:</h4>
           <h5>
-            <a href="#" class="badge badge-primary">Bob</a>
-            <a href="#" class="badge badge-primary">Alisa</a>
-            <a href="#" class="badge badge-primary">Mary</a>
-            <a href="#" class="badge badge-primary">Jack</a>
-            <a href="#" class="badge badge-primary">Nik</a>
-          </h5>
-          
-        </div>
+              <div sec:authorize="isAuthenticated()">
+                  <div class="badge badge-primary" sec:authentication="name" ></div>
+                  </br>
+                  </br>
+                  <img src="../static/img/shy.gif" th:src="@{/img/shy.gif}"  class=" img-thumbnail">
+              </div>
 
+              <div sec:authorize="!isAuthenticated()">
+                 <h6>Log In to find out 🙂</h6>
+              </div>
+          </h5>
+        </div>
       </div>
     </div>
   </div>

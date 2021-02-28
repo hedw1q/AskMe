@@ -81,25 +81,27 @@
              <a href="index.html" class="text-dark">park </a>
              <a href="index.html" class="text-secondary">C# </a></p>
           </h5>
-          
-          
+
+
         </div>
-        <div class="row">
-          <h4>Best users</h4> <br>
+          <div class="row">
+              <h4>Best user:</h4>
+              <h5>
+                  <div sec:authorize="isAuthenticated()">
+                      <div class="badge badge-primary" sec:authentication="name" ></div>
+                      </br>
+                      </br>
+                      <img src="../static/img/shy.gif" th:src="@{/img/shy.gif}"  class=" img-thumbnail">
+                  </div>
 
-          <h5>
-            <a href="#" class="badge badge-primary">Bob</a>
-            <a href="#" class="badge badge-primary">Alisa</a>
-            <a href="#" class="badge badge-primary">Mary</a>
-            <a href="#" class="badge badge-primary">Jack</a>
-            <a href="#" class="badge badge-primary">Nik</a>
-
-          
-        </div>
-
+                  <div sec:authorize="!isAuthenticated()">
+                      <h6>Log In to find out 🙂</h6>
+                  </div>
+              </h5>
+          </div>
       </div>
     </div>
-  </div>
+ </div>
 
   <!-- tags -->
 
