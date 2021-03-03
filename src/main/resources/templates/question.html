@@ -1,174 +1,176 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap core CSS -->
-	<link href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-	<link href="open-iconic/font/css/open-iconic-bootstrap.css" th:href="@{/open-iconic/font/css/open-iconic-bootstrap.css}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link href="open-iconic/font/css/open-iconic-bootstrap.css"
+          th:href="@{/open-iconic/font/css/open-iconic-bootstrap.css}" rel="stylesheet">
 
-  <title> AskMe project </title>
+    <title> AskMe project </title>
 
 </head>
 
 <body>
-<div class="container-fluid" >
-	<nav class="row navbar navbar-expand-md navbar-dark bg-dark">
-		<a class="col-3 navbar-brand" href="/">AskMe</a>
-		<div class="col-9 d-flex justify-content-end">
+<div class="container-fluid">
+    <nav class="row navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="col-3 navbar-brand" href="/">AskMe</a>
+        <div class="col-9 d-flex justify-content-end">
 
 
-			<form th:method="GET" th:action="@{/login}" class="form-inline">
-				<input class="form-control mr-2" type="text" placeholder="Search" aria-label="Search">
-				<input class="btn btn-secondary" type="submit" value="Search"/>
-			</form>
+            <form th:method="GET" th:action="@{/login}" class="form-inline">
+                <input class="form-control mr-2" type="text" placeholder="Search" aria-label="Search">
+                <input class="btn btn-secondary" type="submit" value="Search"/>
+            </form>
 
-			<div sec:authorize="!isAuthenticated()">
-				<form th:method="GET" th:action="@{/login}">
-					<input class="btn btn-primary ml-5" type="submit" value="LogIn"/>
-				</form>
-			</div>
+            <div sec:authorize="!isAuthenticated()">
+                <form th:method="GET" th:action="@{/login}">
+                    <input class="btn btn-primary ml-5" type="submit" value="LogIn"/>
+                </form>
+            </div>
 
-			<div sec:authorize="!isAuthenticated()">
-				<form th:method="GET" th:action="@{/register}">
-					<input class="btn btn-primary ml-2" type="submit" value="Register"/>
-				</form>
-			</div>
-			<div align="right" class="col-3 navbar-brand" sec:authorize="isAuthenticated()">
-				<div sec:authentication="name" ></div>
-			</div>
-			<form th:method="GET" th:action="@{/logout}" sec:authorize="isAuthenticated()">
-				<input class="btn btn-primary ml-5" type="submit" value="Logout"/>
-			</form>
+            <div sec:authorize="!isAuthenticated()">
+                <form th:method="GET" th:action="@{/register}">
+                    <input class="btn btn-primary ml-2" type="submit" value="Register"/>
+                </form>
+            </div>
+            <div align="right" class="col-3 navbar-brand" sec:authorize="isAuthenticated()">
+                <div sec:authentication="name"></div>
+            </div>
+            <form th:method="GET" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+                <input class="btn btn-primary ml-5" type="submit" value="Logout"/>
+            </form>
 
-	</nav>
+    </nav>
 </div>
 
 
 <main role="main" class="container">
 
- <div class="container mt-4 mx-3 mb-3">
-    <div class="row">
-      <div class="col-md-10">
-        <h4 style="margin-bottom: 15px;" th:text="${question.getTitle()}">How to write good code?</h4>
+    <div class="container mt-4 mx-3 mb-3">
+        <div class="row">
+            <div class="col-md-10">
+                <h4 style="margin-bottom: 15px;" th:text="${question.getTitle()}">QUESTION-TITLE</h4>
 
-        <div class="container">
-					<div class="row justify-content-center">
-						<div class="col-1 mx-0 p-0">
-							<div class="row">
-								<img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64" class=" img-thumbnail">
-							</div>
-							
-							<div class="row  pl-2 h-0">
-								<button type="button" class="btn btn-default p-1" aria-label="Left Align">
-										<span class="oi oi-chevron-top" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-default p-1" aria-label="Left Align">
-										<span class="oi oi-chevron-bottom" aria-hidden="true"></span>
-								</button>
-							</div>
-							<div class="row pl-4 h-0">
-								<h5 th:text="${question.getRating()}">32</h5>
-							</div>
-						</div>
-						<div class="col-10">
-							<p class="card-text" th:text="${question.getBody()}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-							incididunt ut labore et dolore magna aliqua. </p>
-							Tags: <a href="#" th:text="${question.getTag()}" >code</a>
-						</div>
-					</div> 
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-1 mx-0 p-0">
+                            <div class="row">
+                                <img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64"
+                                     class=" img-thumbnail">
+                            </div>
+
+                            <div class="row  pl-2 h-0">
+                                <input type="button" class="btn btn-default p-1" aria-label="Left Align">
+                                <span class="oi oi-chevron-top" aria-hidden="true"></span>
+                                </input>
+                                <input type="button" class="btn btn-default p-1" aria-label="Left Align">
+                                    <span class="oi oi-chevron-bottom" aria-hidden="true"></span>
+                                </input>
+                            </div>
+                            <div class="row pl-4 h-0">
+                                <h5 th:text="${question.getRating()}">QUESTION-RATING</h5>
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <p class="card-text" th:text="${question.getBody()}">QUESTION-BODY </p>
+                            Tags: <a href="#" th:text="${question.getTag()}">QUESTION-TAG</a>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 style="margin-bottom: 15px; margin-top: 10px;">Answers</h5>
+
+                <th:block th:each="answer : ${answerList}">
+
+                    <div class="card p-2 m-1">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-1 mx-0 p-0">
+                                    <div class="row">
+                                        <img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64"
+                                             class=" img-thumbnail">
+                                    </div>
+
+                                    <div class="row  pl-2 ">
+                                        <button type="button" class="btn btn-default p-1" aria-label="Left Align">
+                                            <span class="oi oi-chevron-top" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default p-1" aria-label="Left Align">
+                                            <span class="oi oi-chevron-bottom" aria-hidden="true"></span>
+                                        </button>
+
+                                    </div>
+                                    <div class="row pl-4 h-1">
+                                        <h5 th:text="${answer.getRating()}">ANSWER RATING</h5>
+                                    </div>
+                                </div>
+
+                                <div class="col-10">
+                                    <p class="card-text" th:text="${answer.getBody()}">ANSWER BODY </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </th:block>
+                <form th:method="POST" th:action="@{/question/{id}(id=${question.getId()})}" th:object="${newAnswer}"
+                      class="form-group">
+                    <div class="form-group">
+                        <br><h5>You answer</h5>
+                        <textarea th:field="*{body}" class="form-control" id="body" rows="3"
+                                  placeholder="Enter you answer"></textarea>
+                        <input class="btn btn-primary m-2" type="submit" value="Answer"/>
+                    </div>
+                </form>
+            </div>
+
+            <!-- <div class="col-2 bd-sidebar"> -->
+
+            <div class="col-2 d-none d-sm-none d-md-block">
+
+                <div class="row" style="min-height: 50px;"></div>
+                <div class="row">
+                    <h4>Popular tags</h4>
+                    <h5>
+                        <p><a href="index.html" class="text-primary">C++ </a>
+                            <a href="index.html" class="text-secondary">Python </a>
+                            <a href="index.html" class="text-secondary">Java</a>
+                            <a href="index.html" class="text-success">JavaScript </a>
+                            <a href="index.html" class="text-secondary">C# </a></p>
+                    </h5>
+
+
+                </div>
+                <div class="row">
+                    <h4>Best user:</h4>
+                    <h5>
+                        <div sec:authorize="isAuthenticated()">
+                            <div class="badge badge-primary" sec:authentication="name"></div>
+                            </br>
+                            </br>
+                            <img src="../static/img/shy.gif" th:src="@{/img/shy.gif}" class=" img-thumbnail">
+                        </div>
+
+                        <div sec:authorize="!isAuthenticated()">
+                            <h6>Log In to find out 🙂</h6>
+                        </div>
+                    </h5>
+                </div>
+            </div>
         </div>
-
-				<h5 style="margin-bottom: 15px; margin-top: 10px;">Answers</h5>
-
-		  <th:block th:each="answer : ${answerList}">
-
-				<div class="card p-2 m-1">
-					<div class="container">
-						<div class="row justify-content-center">
-							<div class="col-1 mx-0 p-0">
-								<div class="row">
-									<img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64" class=" img-thumbnail">
-								</div>
-								
-								<div class="row  pl-2 ">
-									<button type="button" class="btn btn-default p-1" aria-label="Left Align">
-										<span class="oi oi-chevron-top" aria-hidden="true"></span>
-									</button>
-									<button type="button" class="btn btn-default p-1" aria-label="Left Align">
-										<span class="oi oi-chevron-bottom" aria-hidden="true"></span>
-									</button>
-								</div>
-								<div class="row pl-4 h-1">
-									<h5 th:text="${answer.getRating()}">ANSWER RATING</h5>
-								</div>
-							</div>
-
-							<div class="col-10">
-									<p class="card-text" th:text="${answer.getBody()}">ANSWER BODY </p>
-							</div>
-						</div> 
-					</div>  
-				</div>
-
-		  </th:block>
-		  <form th:method="POST" th:action="@{/question/{id}(id=${question.getId()})}" th:object="${newAnswer}" class="form-group">
-				<div class="form-group">
-					<br><h5>You answer</h5>
-					<textarea th:field="*{body}" class="form-control" id="body" rows="3" placeholder="Enter you answer"></textarea>
-					<input class="btn btn-primary m-2" type="submit" value="Answer"/>
-				</div>
-		  </form>
     </div>
 
-      <!-- <div class="col-2 bd-sidebar"> -->
 
-        <div class="col-2 d-none d-sm-none d-md-block">
-
-        <div class="row" style="min-height: 50px;"></div>
-        <div class="row">
-          <h4>Popular tags</h4>
-			<h5>
-				<p><a href="index.html" class="text-primary">C++   </a>
-					<a href="index.html" class="text-secondary">Python </a>
-					<a href="index.html" class="text-secondary">Java</a>
-					<a href="index.html" class="text-success">JavaScript </a>
-					<a href="index.html" class="text-secondary">C# </a></p>
-			</h5>
+    <!-- tags -->
 
 
-		</div>
-			<div class="row">
-				<h4>Best user:</h4>
-				<h5>
-					<div sec:authorize="isAuthenticated()">
-						<div class="badge badge-primary" sec:authentication="name" ></div>
-						</br>
-						</br>
-						<img src="../static/img/shy.gif" th:src="@{/img/shy.gif}"  class=" img-thumbnail">
-					</div>
-
-					<div sec:authorize="!isAuthenticated()">
-						<h6>Log In to find out 🙂</h6>
-					</div>
-				</h5>
-			</div>
-		</div>
-	</div>
- </div>
-
-
-  
-
-  <!-- tags -->
-
-
-  </main><!-- /.container -->
-  <script src="static/js/jquery.com/jquery-3.4.1.slim.min.js"></script>
-  <script src="static/js/bootstrap.bundle.min.js"></script>
+</main><!-- /.container -->
+<script src="static/js/jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="static/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

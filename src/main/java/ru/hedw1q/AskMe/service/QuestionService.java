@@ -1,17 +1,14 @@
 package ru.hedw1q.AskMe.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.hedw1q.AskMe.models.Question;
 import ru.hedw1q.AskMe.repository.QuestionRepository;
-import ru.hedw1q.AskMe.repository.UserRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 /**
  * @author hedw1q
  * Service class for Question entity. Provides methods used in QuestionController class.
@@ -27,9 +24,10 @@ public class QuestionService {
         questionRepository.save(newQuestion);
         return true;
     }
-    public List<? extends Question> getQuestionList(){
-        List <Question> questionList=new ArrayList<>();
-        questionList= questionRepository.findAll();
+
+    public Page<Question> getQuestionList(Pageable pageable){
+        Page<Question> questionList;
+        questionList=questionRepository.findAll(pageable);
         return questionList;
     }
     public Question getQuestion(long id){

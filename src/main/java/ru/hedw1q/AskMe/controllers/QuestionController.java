@@ -9,12 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.hedw1q.AskMe.models.Answer;
 import ru.hedw1q.AskMe.models.Question;
-import ru.hedw1q.AskMe.models.User;
 import ru.hedw1q.AskMe.service.AnswerService;
 import ru.hedw1q.AskMe.service.QuestionService;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 
 /**
@@ -52,12 +48,17 @@ public class QuestionController {
 
     @PostMapping("question/{id}")
     public String addAnswer(@PathVariable long id ,@ModelAttribute("newAnswer") Answer newAnswer, Model model) {
-     //   newAnswer.setDate(LocalDateTime.now());
+        newAnswer.setDate(LocalDateTime.now());
         newAnswer.setRating(0);
         newAnswer.setQuestion(questionService.getQuestion(id));
         answerService.addAnswer(newAnswer);
         return "redirect:/question/{id}";
     }
 
+
+
+
+
 }
+
 

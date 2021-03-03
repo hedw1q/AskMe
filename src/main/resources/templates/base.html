@@ -126,8 +126,13 @@
         </div>  
       </div>
 
+
       <div class="row justify-content-end">
-        <button type="button" class="btn btn-secondary mt-3 mx-1 mb-5">1</button>
+          <a th:href="@{/{page}(page=${questionPage.getPageable().previousOrFirst().getPageNumber()})}" class="btn btn-secondary mt-3 mx-1 mb-5" ><<</a>
+          <th:block th:each="i: ${#numbers.sequence(0, questionPage.getTotalPages() - 1)}">
+          <a th:href="@{/{currentpage}(currentpage=${i})}" th:text="${i}" class="btn btn-secondary mt-3 mx-1 mb-5" >PAGES</a>
+          </th:block>
+          <a th:href="@{/{page}(page=${questionPage.getPageable().next().getPageNumber()})}" class="btn btn-secondary mt-3 mx-1 mb-5" >>></a>
       </div>
     </div>
         
@@ -167,8 +172,6 @@
     </div>
   </div>
 
-
-  
 
   <!-- tags -->
 
