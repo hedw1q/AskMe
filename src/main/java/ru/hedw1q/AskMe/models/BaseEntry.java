@@ -7,6 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author hedw1q
@@ -35,9 +36,11 @@ public class BaseEntry extends BaseEntity {
         this.body = body;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public String getDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        return date.format(formatter);
     }
+
 
     public void setDate(LocalDateTime date) {
         this.date = date;

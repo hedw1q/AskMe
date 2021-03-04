@@ -35,5 +35,11 @@ public class QuestionService {
         return question;
     }
 
+    public Page<Question> getSearchedQuestionList(String searchText,Pageable pageable){
+        Page<Question> questionList;
+        questionList=questionRepository.findByBodyContaining(searchText, pageable);
+        return questionList;
+    }
+
 
 }

@@ -1,12 +1,13 @@
 package ru.hedw1q.AskMe.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.hedw1q.AskMe.models.Answer;
 import ru.hedw1q.AskMe.models.Question;
 import ru.hedw1q.AskMe.service.AnswerService;
@@ -53,6 +54,17 @@ public class QuestionController {
         newAnswer.setQuestion(questionService.getQuestion(id));
         answerService.addAnswer(newAnswer);
         return "redirect:/question/{id}";
+    }
+
+    @GetMapping("/search")
+    public String searchQuestions(@RequestParam(value = "searchText") String searchText,
+                                  @RequestParam(defaultValue = "0") int page,
+                                  Model model){
+        Pageable pageable = PageRequest.of(page,3);
+        Page<Question> questionPage=questionService.getSearchedQuestionList(searchText,pageable);
+        model.addAttribute("questionPage",questionPage);
+        model.addAttribute("questionList",questionPage.getContent());
+        return "base";
     }
 
 
