@@ -1,11 +1,7 @@
 package ru.hedw1q.AskMe.models;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotEmpty;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

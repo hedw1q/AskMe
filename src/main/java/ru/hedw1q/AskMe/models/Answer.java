@@ -1,9 +1,6 @@
 package ru.hedw1q.AskMe.models;
 
-import org.hibernate.annotations.DynamicUpdate;
-
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * @author hedw1q
@@ -14,7 +11,7 @@ public class Answer extends BaseEntry {
 
     private int rating;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="question_id")
+    @JoinColumn(name = "question_id")
     private Question question;
 
     public Question getQuestion() {
@@ -36,11 +33,11 @@ public class Answer extends BaseEntry {
         this.rating = rating;
     }
 
-    public void incrRating(){
+    public void incrRating() {
         this.rating++;
     }
 
-    public void decrRating(){
+    public void decrRating() {
         this.rating--;
     }
 }

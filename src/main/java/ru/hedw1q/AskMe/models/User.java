@@ -3,7 +3,10 @@ package ru.hedw1q.AskMe.models;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
@@ -16,9 +19,9 @@ import java.util.Set;
 @Table(name = "AM_user")
 public class User extends BaseEntity implements UserDetails {
 
-    @Size(min=2, message = "Не меньше 2 знаков")
+    @Size(min = 2, message = "Не меньше 2 знаков")
     private String username;
-    @Size(min=2, message = "Не меньше 2 знаков")
+    @Size(min = 2, message = "Не меньше 2 знаков")
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;

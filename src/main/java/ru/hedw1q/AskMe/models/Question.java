@@ -1,9 +1,7 @@
 package ru.hedw1q.AskMe.models;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,26 +10,31 @@ import java.util.List;
  */
 @Entity
 @Table(name = "AM_question")
-public class Question extends BaseEntry{
+public class Question extends BaseEntry {
 
-    @Size(min=2, message = "Не меньше 2 знаков")
+    @Size(min = 2, message = "Не меньше 2 знаков")
     private String title;
     private String tag;
     private int rating;
-    @OneToMany (cascade = CascadeType.ALL, mappedBy="question", fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", fetch = FetchType.EAGER)
     private List<Answer> answers;
 
-    public Question() { }
+    public Question() {
+    }
 
-    public int getRating() { return rating; }
+    public int getRating() {
+        return rating;
+    }
 
-    public void setRating(int rating) { this.rating = rating; }
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
-    public void incrRating(){
+    public void incrRating() {
         this.rating++;
     }
 
-    public void decrRating(){
+    public void decrRating() {
         this.rating--;
     }
 

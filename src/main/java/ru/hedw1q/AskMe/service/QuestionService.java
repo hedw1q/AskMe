@@ -9,6 +9,7 @@ import ru.hedw1q.AskMe.repository.QuestionRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 /**
  * @author hedw1q
  * Service class for Question entity. Provides methods used in QuestionController class.
@@ -25,19 +26,20 @@ public class QuestionService {
         return true;
     }
 
-    public Page<Question> getQuestionList(Pageable pageable){
+    public Page<Question> getQuestionList(Pageable pageable) {
         Page<Question> questionList;
-        questionList=questionRepository.findAll(pageable);
+        questionList = questionRepository.findAll(pageable);
         return questionList;
     }
-    public Question getQuestion(long id){
+
+    public Question getQuestion(long id) {
         Question question = questionRepository.findById(id).orElse(new Question());
         return question;
     }
 
-    public Page<Question> getSearchedQuestionList(String searchText,Pageable pageable){
+    public Page<Question> getSearchedQuestionList(String searchText, Pageable pageable) {
         Page<Question> questionList;
-        questionList=questionRepository.findByBodyContaining(searchText, pageable);
+        questionList = questionRepository.findByBodyContaining(searchText, pageable);
         return questionList;
     }
 

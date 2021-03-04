@@ -10,6 +10,7 @@ import ru.hedw1q.AskMe.models.Role;
 import ru.hedw1q.AskMe.models.User;
 import ru.hedw1q.AskMe.repository.RoleRepository;
 import ru.hedw1q.AskMe.repository.UserRepository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Collections;

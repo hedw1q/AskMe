@@ -10,10 +10,10 @@ import ru.hedw1q.AskMe.models.Question;
  * @author hedw1q
  * Repository class for Question objects.
  */
-public interface QuestionRepository extends JpaRepository<Question,Long> {
+public interface QuestionRepository extends JpaRepository<Question, Long> {
     @Override
     Page<Question> findAll(Pageable pageable);
 
-    @Query("SELECT u FROM Question u where u.body like %?1%")
-    Page <Question> findByBodyContaining(String searchText, Pageable pageable);
+    @Query("SELECT u FROM Question u where lower(u.body) like %?1%")
+    Page<Question> findByBodyContaining(String searchText, Pageable pageable);
 }

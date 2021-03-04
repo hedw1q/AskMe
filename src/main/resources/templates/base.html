@@ -23,8 +23,9 @@
         <div class="col-9 d-flex justify-content-end">
 
 
-            <form th:method="GET" th:action="@{/search}"  class="form-inline">
-                <input th:name="searchText" class="form-control mr-2" type="text" placeholder="Search" aria-label="Search">
+            <form th:method="GET" th:action="@{/search}" class="form-inline">
+                <input th:name="searchText" class="form-control mr-2" type="text" placeholder="Search"
+                       aria-label="Search">
                 <input class="btn btn-secondary" type="submit" value="Search"/>
             </form>
 
@@ -147,19 +148,19 @@
                     </div>
                 </div>
 
-<!--                <div th:if="${tab == T(ru.hedw1q.AskMe.controllers.DefaultController.Tab).BEST}" class="row justify-content-end">-->
-<!--                    <div th:if="${questionPage.getPageable().getPageNumber() !=0}">-->
-<!--                        <a th:href="@{/(page=${questionPage.getPageable().previousOrFirst().getPageNumber()})}"-->
-<!--                           class="btn btn-secondary mt-3 mx-1 mb-5"><<</a>-->
-<!--                    </div>-->
-<!--                    <th:block th:each="i: ${#numbers.sequence(1, questionPage.getTotalPages() )}">-->
-<!--                        <a th:href="@{/(page=${i-1})}" th:text="${i}" class="btn btn-secondary mt-3 mx-1 mb-5">PAGES</a>-->
-<!--                    </th:block>-->
-<!--                    <a th:if="${questionPage.getPageable().getPageNumber() != questionPage.getTotalPages()-1}"-->
-<!--                       th:href="@{/(page=${questionPage.getPageable().next().getPageNumber()})}"-->
-<!--                       class="btn btn-secondary mt-3 mx-1 mb-5">>></a>-->
-<!--                </div>-->
-<!--                -->
+                <!--                <div th:if="${tab == T(ru.hedw1q.AskMe.controllers.DefaultController.Tab).BEST}" class="row justify-content-end">-->
+                <!--                    <div th:if="${questionPage.getPageable().getPageNumber() !=0}">-->
+                <!--                        <a th:href="@{/(page=${questionPage.getPageable().previousOrFirst().getPageNumber()})}"-->
+                <!--                           class="btn btn-secondary mt-3 mx-1 mb-5"><<</a>-->
+                <!--                    </div>-->
+                <!--                    <th:block th:each="i: ${#numbers.sequence(1, questionPage.getTotalPages() )}">-->
+                <!--                        <a th:href="@{/(page=${i-1})}" th:text="${i}" class="btn btn-secondary mt-3 mx-1 mb-5">PAGES</a>-->
+                <!--                    </th:block>-->
+                <!--                    <a th:if="${questionPage.getPageable().getPageNumber() != questionPage.getTotalPages()-1}"-->
+                <!--                       th:href="@{/(page=${questionPage.getPageable().next().getPageNumber()})}"-->
+                <!--                       class="btn btn-secondary mt-3 mx-1 mb-5">>></a>-->
+                <!--                </div>-->
+                <!--                -->
 
                 <div class="row justify-content-end">
                     <div th:if="${questionPage.getPageable().getPageNumber() !=0}">
@@ -167,7 +168,8 @@
                            class="btn btn-secondary mt-3 mx-1 mb-5"><<</a>
                     </div>
                     <th:block th:each="i: ${#numbers.sequence(1, questionPage.getTotalPages() )}">
-                        <a th:href="@{/(page=${i-1},tab=${tab})}" th:text="${i}" class="btn btn-secondary mt-3 mx-1 mb-5">PAGES</a>
+                        <a th:href="@{/(page=${i-1},tab=${tab})}" th:text="${i}"
+                           class="btn btn-secondary mt-3 mx-1 mb-5">PAGES</a>
                     </th:block>
                     <a th:if="${questionPage.getPageable().getPageNumber() != questionPage.getTotalPages()-1}"
                        th:href="@{/(page=${questionPage.getPageable().next().getPageNumber()},tab=${tab})}"
