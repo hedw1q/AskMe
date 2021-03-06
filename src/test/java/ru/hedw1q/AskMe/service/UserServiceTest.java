@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 @SpringBootTest
 public class UserServiceTest {
+
     @Autowired
     private UserService userService;
     @Autowired
