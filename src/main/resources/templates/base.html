@@ -136,11 +136,19 @@
 
                                             <a th:href="@{/question/{id}(id=${question.getId()})}">answers</a>
                                             Tags: <a href="#" th:text="${question.getTag()}">TAG</a>
-
+                                            <text style="text-align: right;float: right;align: right" th:text="${question.getDate()}">DATE</text>
+                                        <br>
+                                            <div style="text-align: right;float: right;align: right">
+                                                <nobr>
+                                                <text >asked by</text>
+                                                <text th:text="${question.getAuthor()}">DATE</text>
+                                                </nobr>
                                         </div>
                                     </div>
+                                    </div>
+
                                 </div>
-                                <text style="text-align: right;align: right" th:text="${question.getDate()}">DATE</text>
+
                             </div>
 
                         </th:block>

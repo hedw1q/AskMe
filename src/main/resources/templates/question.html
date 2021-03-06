@@ -53,13 +53,14 @@
     <div class="container mt-4 mx-3 mb-3">
         <div class="row">
             <div class="col-md-10">
+                <nobr>
                 <h4 style="margin-bottom: 15px;" th:text="${question.getTitle()}">QUESTION-TITLE</h4>
-
+            </nobr>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-1 mx-0 p-0">
                             <div class="row">
-                                <img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64"
+                                <img src="../static/img/rain.gif" th:src="@{/img/rain.gif}" width="64" height="64"
                                      class=" img-thumbnail">
                             </div>
 
@@ -78,7 +79,16 @@
                         <div class="col-10">
                             <p class="card-text" th:text="${question.getBody()}">QUESTION-BODY </p>
                             Tags: <a href="#" th:text="${question.getTag()}">QUESTION-TAG</a>
+                            <text style="text-align: right;float: right;align: right" th:text="${question.getDate()}">DATE</text>
+                            <br>
+                            <div style="text-align: right;float: right;align: right">
+                                <nobr>
+                                    <text >asked by</text>
+                                    <text th:text="${question.getAuthor()}">DATE</text>
+                                </nobr>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -91,7 +101,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-1 mx-0 p-0">
                                     <div class="row">
-                                        <img src="../static/img/cat.jpg" th:src="@{/img/cat.jpg}" width="64" height="64"
+                                        <img src="../static/img/rain.gif" th:src="@{/img/rain.gif}" width="64" height="64"
                                              class=" img-thumbnail">
                                     </div>
 
@@ -113,6 +123,13 @@
                                     <p class="card-text" th:text="${answer.getBody()}">ANSWER BODY </p>
                                 </div>
                             </div>
+                        </div>
+                        <text style="text-align: right;align: right" th:text="${answer.getDate()}">DATE</text>
+                        <div style="text-align: right;float: right;align: right">
+                            <nobr>
+                                <text >answered by</text>
+                                <text th:text="${answer.getAuthor()}">AUTHOR ANSWER</text>
+                            </nobr>
                         </div>
                     </div>
 
