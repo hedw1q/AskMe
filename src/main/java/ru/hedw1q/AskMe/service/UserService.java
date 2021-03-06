@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -35,47 +36,59 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-
-        if (user == null) {
+        User user;
+        try {
+            user = userRepository.findByUsername(username).get();
+        } catch (NoSuchElementException noSuchElementException) {
             throw new UsernameNotFoundException("User not found");
         }
 
         return user;
     }
 
-    public User findUserById(Long userId) {
-        Optional<User> userFromDb = userRepository.findById(userId);
-        return userFromDb.orElse(new User());
+    public User findUserByUserName(String username) throws UsernameNotFoundException {
+        Optional<User> userFromDb = userRepository.findByUsername(username);
+        return userFromDb.orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
-    public List<User> allUsers() {
+
+    public User findUserById(Long userId) throws UsernameNotFoundException {
+        Optional<User> userFromDb = userRepository.findById(userId);
+        return userFromDb.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     public boolean saveUser(User user) {
-        User userFromDB = userRepository.findByUsername(user.getUsername());
 
-        if (userFromDB != null) {
-            return false;
+        if (userRepository.findByUsername(user.getUsername()).isPresent() == false) {
+
+            user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+            return true;
         }
-
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-        return true;
+        return false;
     }
 
-    public boolean deleteUser(Long userId) {
+    public boolean deleteUserbyId(Long userId) {
         if (userRepository.findById(userId).isPresent()) {
+
             userRepository.deleteById(userId);
             return true;
         }
         return false;
     }
 
-    public List<User> usergtList(Long idMin) {
-        return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
-                .setParameter("paramId", idMin).getResultList();
+    public boolean deleteUserbyUsername(String username) {
+        if (userRepository.findByUsername(username).isPresent()) {
+            long deletedId = userRepository.findByUsername(username).get().getId();
+            userRepository.deleteById(deletedId);
+            return true;
+        }
+        return false;
     }
+
 }
