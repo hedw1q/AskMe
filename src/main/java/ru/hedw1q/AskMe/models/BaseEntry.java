@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 public class BaseEntry extends BaseEntity {
 
     private String author;
-    @NotEmpty(message = "Введите тело")
+    @NotEmpty(message = "Тело не должно быть пустым")
     private String body;
     private LocalDateTime date;
 

@@ -1,6 +1,7 @@
 package ru.hedw1q.AskMe.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Table(name = "AM_question")
 public class Question extends BaseEntry {
 
-    @Size(min = 2, message = "Не меньше 2 знаков")
+    @NotEmpty(message = "Заголовок вопроса не должен быть пустым")
     private String title;
     private String tag;
     private int rating;
