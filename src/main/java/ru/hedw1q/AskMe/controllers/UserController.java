@@ -6,6 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 import ru.hedw1q.AskMe.models.User;
 import ru.hedw1q.AskMe.service.UserService;
 
@@ -13,7 +16,7 @@ import ru.hedw1q.AskMe.service.UserService;
 /**
  * @author hedw1q
  */
-@Controller
+@RestController
 public class UserController {
     @Autowired
     private UserService userService;

@@ -10,13 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import ru.hedw1q.AskMe.models.Question;
 import ru.hedw1q.AskMe.service.QuestionService;
 
 /**
  * @author hedw1q
  */
-@Controller
+@RestController
 @RequestMapping("/")
 public class DefaultController {
     @Autowired

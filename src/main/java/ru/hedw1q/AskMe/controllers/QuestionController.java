@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 /**
  * @author hedw1q
  */
-@Controller
+@RestController
 public class QuestionController {
     @Autowired
     QuestionService questionService;

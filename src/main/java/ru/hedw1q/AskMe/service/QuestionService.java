@@ -3,6 +3,7 @@ package ru.hedw1q.AskMe.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.acls.model.NotFoundException;
 import org.springframework.stereotype.Service;
 import ru.hedw1q.AskMe.models.Question;
 import ru.hedw1q.AskMe.repository.QuestionRepository;
@@ -32,8 +33,8 @@ public class QuestionService {
         return questionList;
     }
 
-    public Question getQuestion(long id) {
-        Question question = questionRepository.findById(id).orElse(new Question());
+    public Question getQuestion(long id)  throws NotFoundException{
+        Question question = questionRepository.findById(id).orElseThrow(()->new NotFoundException("Question not found"));
         return question;
     }
 
