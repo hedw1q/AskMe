@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Tests for service.UserService class
+ *
  * @author hedw1q
  */
 @SpringBootTest
@@ -41,7 +42,6 @@ public class UserServiceTest {
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
-
     }
 
     @Test
