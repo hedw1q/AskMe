@@ -12,6 +12,8 @@ Forum implementation example using Spring-Boot, Thymeleaf, MVC and more.
  - Thymeleaf
  - Tomcat 8
  - PostgreSQL
+ - Mockito
+ - JUnit
  ## Spring Features
 
  - Spring Boot
