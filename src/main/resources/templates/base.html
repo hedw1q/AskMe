@@ -76,29 +76,29 @@
                 </div>
 
                 <div class="card text my-2">
-                    <div th:if="${tab == T(ru.hedw1q.AskMe.controllers.DefaultController.Tab).NEW}" class="card-header">
+                    <div th:if="${tab == T(ru.hedw1q.AskMe.controllers.MainPageController.Tab).NEW}" class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
                                 <a class="nav-link active"
-                                   th:href="@{/(tab=${T(ru.hedw1q.AskMe.controllers.DefaultController.Tab).NEW})}">New</a>
+                                   th:href="@{/(tab=${T(ru.hedw1q.AskMe.controllers.MainPageController.Tab).NEW})}">New</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   th:href="@{/(tab=${T(ru.hedw1q.AskMe.controllers.DefaultController.Tab).BEST})}">Best</a>
+                                   th:href="@{/(tab=${T(ru.hedw1q.AskMe.controllers.MainPageController.Tab).BEST})}">Best</a>
                             </li>
                         </ul>
                     </div>
 
-                    <div th:if="${tab == T(ru.hedw1q.AskMe.controllers.DefaultController.Tab).BEST}"
+                    <div th:if="${tab == T(ru.hedw1q.AskMe.controllers.MainPageController.Tab).BEST}"
                          class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   th:href="@{/(tab=${T(ru.hedw1q.AskMe.controllers.DefaultController.Tab).NEW})}">New</a>
+                                   th:href="@{/(tab=${T(ru.hedw1q.AskMe.controllers.MainPageController.Tab).NEW})}">New</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active"
-                                   th:href="@{/(tab=${T(ru.hedw1q.AskMe.controllers.DefaultController.Tab).BEST})}">Best</a>
+                                   th:href="@{/(tab=${T(ru.hedw1q.AskMe.controllers.MainPageController.Tab).BEST})}">Best</a>
                             </li>
                         </ul>
                     </div>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
 
-                <!--                <div th:if="${tab == T(ru.hedw1q.AskMe.controllers.DefaultController.Tab).BEST}" class="row justify-content-end">-->
+                <!--                <div th:if="${tab == T(ru.hedw1q.AskMe.controllers.MainPageControllerr.Tab).BEST}" class="row justify-content-end">-->
                 <!--                    <div th:if="${questionPage.getPageable().getPageNumber() !=0}">-->
                 <!--                        <a th:href="@{/(page=${questionPage.getPageable().previousOrFirst().getPageNumber()})}"-->
                 <!--                           class="btn btn-secondary mt-3 mx-1 mb-5"><<</a>-->

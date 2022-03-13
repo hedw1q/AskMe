@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.hedw1q.AskMe.models.Role;
 import ru.hedw1q.AskMe.models.User;
+import ru.hedw1q.AskMe.models.exception.UserAlreadyExistException;
 import ru.hedw1q.AskMe.repository.RoleRepository;
 import ru.hedw1q.AskMe.repository.UserRepository;
 
@@ -61,16 +62,14 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public boolean saveUser(User user) {
-
-        if (userRepository.findByUsername(user.getUsername()).isPresent() == false) {
-
-            user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            userRepository.save(user);
-            return true;
+    public boolean saveUser(User user) throws UserAlreadyExistException {
+        if (checkIfUserExists(user)) {
+            throw new UserAlreadyExistException("User with such username already exists");
         }
-        return false;
+        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return true;
     }
 
     public boolean deleteUserbyId(Long userId) {
@@ -89,6 +88,10 @@ public class UserService implements UserDetailsService {
             return true;
         }
         return false;
+    }
+
+    private boolean checkIfUserExists(User user) {
+        return userRepository.findByUsername(user.getUsername()).isPresent();
     }
 
 }

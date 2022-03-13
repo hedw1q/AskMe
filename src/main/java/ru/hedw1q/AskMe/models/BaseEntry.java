@@ -1,6 +1,7 @@
 package ru.hedw1q.AskMe.models;
 
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 public class BaseEntry extends BaseEntity {
 
     private String author;
-    @NotEmpty(message = "Тело не должно быть пустым")
+    @NotBlank(message = "Please write something")
     private String body;
     private LocalDateTime date;
 

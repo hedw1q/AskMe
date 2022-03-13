@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import ru.hedw1q.AskMe.service.UserService;
 
 @Configuration
@@ -21,18 +23,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     UserService userService;
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    public BCryptPasswordEncoder getBCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .csrf()
-                .disable()
                 .authorizeRequests()
                 //Доступ только для не зарегистрированных пользователей
-                .antMatchers("/register").not().fullyAuthenticated()
+                .antMatchers("/register","/login").not().fullyAuthenticated()
                 //Доступ разрешен всем пользователей
                 .antMatchers("/", "/resources/**").permitAll()
                 .and()
@@ -41,15 +41,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 //Перенарпавление на главную страницу после успешного входа
                 .defaultSuccessUrl("/")
+                .failureUrl("/login?error=true")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll()
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/")
+                .and()
+                .csrf()
+                .disable();
     }
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
     }
 }

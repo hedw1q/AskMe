@@ -1,5 +1,6 @@
 package ru.hedw1q.AskMe.models;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Collection;
@@ -20,10 +22,12 @@ import java.util.Set;
 @Table(name = "AM_user")
 public class User extends BaseEntity implements UserDetails {
 
-    @NotEmpty(message = "Юзернейм не должен быть пустым")
+    @NotBlank(message = "Please choose a username")
     private String username;
-    @NotEmpty(message = "Пароль не должен быть пустым")
+    @Length(min=5, message = "Please provide a valid password")
     private String password;
+
+    private String confirmPassword;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 

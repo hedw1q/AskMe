@@ -17,9 +17,9 @@ import ru.hedw1q.AskMe.service.QuestionService;
 /**
  * @author hedw1q
  */
-@RestController
+@Controller
 @RequestMapping("/")
-public class DefaultController {
+public class MainPageController {
     @Autowired
     QuestionService questionService;
 
