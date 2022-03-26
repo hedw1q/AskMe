@@ -27,35 +27,5 @@ public class UserController {
         return "settings";
     }
 
-    @GetMapping("/login")
-    public String getLoginPage(Model model, @RequestParam(value = "error", defaultValue = "false") boolean loginError) {
-        if (loginError) {
-            model.addAttribute("error", "Username or password is incorrect");
-        }
-        System.out.println(model.getAttribute("error"));
-        return "login";
-    }
-
-    @GetMapping("/register")
-    public String getRegisterForm(Model model) {
-        model.addAttribute("userForm", new User());
-        return "register";
-    }
-
-    @PostMapping("/register")
-    public String addUser(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()){
-            return "register";
-        }
-        try{
-            userService.saveUser(userForm);
-        }catch (UserAlreadyExistException userAlreadyExistException){
-            bindingResult.rejectValue("username", "userForm.username", userAlreadyExistException.getMessage());
-            model.addAttribute("userForm", userForm);
-            return "register";
-        }
-        return "redirect:/";
-    }
-
 }
 

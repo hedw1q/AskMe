@@ -1,5 +1,6 @@
 package ru.hedw1q.AskMe.models;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "AM_role")
+@Data
 public class Role implements GrantedAuthority {
     @Id
     private Long id;

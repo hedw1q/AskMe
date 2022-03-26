@@ -44,20 +44,20 @@ public class UserServiceTest {
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
-    @Test
-    void shouldLoadUserByUsername() {
-        UserDetails user = this.userService.loadUserByUsername("test");
-        assertThat(user.getUsername() == "test");
-
-        Exception exception = assertThrows(UsernameNotFoundException.class, () -> {
-            UserDetails emptyUser = this.userService.loadUserByUsername("");
-        });
-
-        String expectedMessage = "User not found";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.contains(expectedMessage));
-    }
+//    @Test
+//    void shouldLoadUserByUsername() {
+//        UserDetails user = this.userService.loadUserByUsername("test");
+//        assertThat(user.getUsername() == "test");
+//
+//        Exception exception = assertThrows(UsernameNotFoundException.class, () -> {
+//            UserDetails emptyUser = this.userService.loadUserByUsername("");
+//        });
+//
+//        String expectedMessage = "User not found";
+//        String actualMessage = exception.getMessage();
+//
+//        assertTrue(actualMessage.contains(expectedMessage));
+//    }
 
     @Test
     void shouldFindAllUsers() {

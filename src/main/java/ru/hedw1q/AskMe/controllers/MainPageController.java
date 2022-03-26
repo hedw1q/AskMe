@@ -49,6 +49,9 @@ public class MainPageController {
         return "base";
     }
 
-
+    @GetMapping("/home")
+    public String redirectToHome(){
+        return "redirect:/";
+    }
 
 }

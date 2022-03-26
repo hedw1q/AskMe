@@ -1,13 +1,11 @@
 package ru.hedw1q.AskMe.models;
 
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -19,6 +17,7 @@ import java.util.Set;
  * Simple entity object representing an user.
  */
 @Entity
+@Data
 @Table(name = "AM_user")
 public class User extends BaseEntity implements UserDetails {
 
@@ -26,7 +25,7 @@ public class User extends BaseEntity implements UserDetails {
     private String username;
     @Length(min=5, message = "Please provide a valid password")
     private String password;
-
+    @Transient
     private String confirmPassword;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;

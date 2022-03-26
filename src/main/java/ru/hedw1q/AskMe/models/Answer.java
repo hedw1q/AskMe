@@ -1,11 +1,14 @@
 package ru.hedw1q.AskMe.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 /**
  * @author hedw1q
  */
 @Entity
+@Data
 @Table(name = "AM_answer")
 public class Answer extends BaseEntry {
 

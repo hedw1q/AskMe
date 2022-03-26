@@ -1,5 +1,7 @@
 package ru.hedw1q.AskMe.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -10,6 +12,7 @@ import java.util.List;
  * Simple entity object representing an question.
  */
 @Entity
+@Data
 @Table(name = "AM_question")
 public class Question extends BaseEntry {
 
