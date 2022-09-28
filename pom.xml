@@ -10,9 +10,9 @@
     </parent>
     <groupId>ru.hedw1q</groupId>
     <artifactId>AskMe</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>AskMe</name>
-    <description>AskMe SpringBoot pet project</description>
+    <description>AskMe project</description>
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
